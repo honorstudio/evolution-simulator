@@ -10,6 +10,7 @@ import { StatsPanel, OrganismInfoPanel, OrganismListPanel, DebugInfoPanel, SaveL
 import { DockingLayout, useDockingStore, PANEL_INFO, PanelId } from './ui/docking';
 import { Organism } from './organism/Organism';
 import { DisasterType } from './disaster';
+import { WORLD_SIZE_PRESETS, WorldSizePreset, setWorldSize } from './world/WorldConfig';
 import './ui/panels/MenuBar.css';
 
 /**
@@ -598,10 +599,29 @@ function GameMain({ onNewGame }: { onNewGame: () => void }) {
 /**
  * App - 메인 애플리케이션
  */
+/**
+ * 게임 설정 인터페이스
+ */
+interface GameSettings {
+  worldSize: WorldSizePreset;
+  initialOrganisms: number;
+  temperature: number;
+  oxygenLevel: number;
+}
+
+const DEFAULT_SETTINGS: GameSettings = {
+  worldSize: 'small',
+  initialOrganisms: 20,
+  temperature: 25,
+  oxygenLevel: 0.001,
+};
+
 function App() {
   const [started, setStarted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [gameKey, setGameKey] = useState(0);
+  const [showSettings, setShowSettings] = useState(false);
+  const [settings, setSettings] = useState<GameSettings>(DEFAULT_SETTINGS);
 
   // 새 게임 시작 (GameProvider 재생성, 시작 화면으로 돌아가지 않음)
   const handleNewGame = useCallback(() => {
@@ -611,11 +631,19 @@ function App() {
 
   // 시작 버튼 클릭 핸들러
   const handleStart = useCallback(() => {
+    // 월드 크기 설정 적용
+    setWorldSize(settings.worldSize);
+
     setLoading(true);
     // 로딩 애니메이션이 보이도록 약간의 지연 후 시작
     setTimeout(() => {
       setStarted(true);
     }, 100);
+  }, [settings.worldSize]);
+
+  // 설정 변경 핸들러
+  const handleSettingChange = useCallback((key: keyof GameSettings, value: GameSettings[keyof GameSettings]) => {
+    setSettings(prev => ({ ...prev, [key]: value }));
   }, []);
 
   // 시작 화면
@@ -625,13 +653,89 @@ function App() {
         <div className="start-content">
           <h1>Evolution Simulator</h1>
           <p>AI 기반 생태계 진화 시뮬레이션</p>
+
           {loading ? (
             <div className="loading-container">
               <div className="loading-spinner"></div>
               <p className="loading-text">세계를 생성하는 중...</p>
             </div>
           ) : (
-            <button onClick={handleStart}>시작하기</button>
+            <>
+              {/* 설정 토글 버튼 */}
+              <button
+                className="settings-toggle"
+                onClick={() => setShowSettings(!showSettings)}
+              >
+                {showSettings ? '설정 접기 ▲' : '설정 열기 ▼'}
+              </button>
+
+              {/* 설정 패널 */}
+              {showSettings && (
+                <div className="settings-panel">
+                  {/* 월드 크기 */}
+                  <div className="setting-group">
+                    <label>월드 크기</label>
+                    <div className="size-options">
+                      {(Object.keys(WORLD_SIZE_PRESETS) as WorldSizePreset[]).map((key) => {
+                        const preset = WORLD_SIZE_PRESETS[key];
+                        return (
+                          <button
+                            key={key}
+                            className={`size-option ${settings.worldSize === key ? 'active' : ''}`}
+                            onClick={() => handleSettingChange('worldSize', key)}
+                          >
+                            <span className="size-label">{preset.label}</span>
+                            <span className="size-desc">{preset.description}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* 초기 생명체 수 */}
+                  <div className="setting-group">
+                    <label>초기 생명체 수: {settings.initialOrganisms}</label>
+                    <input
+                      type="range"
+                      min="5"
+                      max="100"
+                      value={settings.initialOrganisms}
+                      onChange={(e) => handleSettingChange('initialOrganisms', parseInt(e.target.value))}
+                    />
+                  </div>
+
+                  {/* 초기 온도 */}
+                  <div className="setting-group">
+                    <label>초기 온도: {settings.temperature}°C</label>
+                    <input
+                      type="range"
+                      min="-20"
+                      max="50"
+                      value={settings.temperature}
+                      onChange={(e) => handleSettingChange('temperature', parseInt(e.target.value))}
+                    />
+                  </div>
+
+                  {/* 초기 산소 농도 */}
+                  <div className="setting-group">
+                    <label>초기 산소: {(settings.oxygenLevel * 100).toFixed(3)}%</label>
+                    <input
+                      type="range"
+                      min="0"
+                      max="21"
+                      step="0.1"
+                      value={settings.oxygenLevel * 100}
+                      onChange={(e) => handleSettingChange('oxygenLevel', parseFloat(e.target.value) / 100)}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* 시작 버튼 */}
+              <button className="start-button" onClick={handleStart}>
+                시작하기
+              </button>
+            </>
           )}
         </div>
       </div>

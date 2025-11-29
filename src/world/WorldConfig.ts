@@ -1,22 +1,50 @@
 /**
- * 월드 설정 상수
+ * 월드 설정
  * 세계의 기본 크기와 청크 정보를 정의합니다
  *
- * 실제 지구 비율의 대륙 규모 시뮬레이션을 위해
- * 32,000 x 24,000 픽셀 크기의 월드를 사용합니다. (4배 확대)
- * 너무 크면 메모리 문제 발생, 적절한 크기로 조정
+ * 월드 크기 프리셋:
+ * - small: 8000 x 6000 (1/4 크기) - 저사양 PC/모바일
+ * - medium: 16000 x 12000 (1/2 크기) - 중간 사양
+ * - large: 32000 x 24000 (최대 크기) - 고사양 PC
  */
 
-export const WORLD_CONFIG = {
-  // 월드의 가로 너비 (픽셀) - 대륙 규모 (4배 확대)
-  width: 32000,
+// 월드 크기 프리셋 정의
+export const WORLD_SIZE_PRESETS = {
+  small: { width: 8000, height: 6000, label: '작음 (8K x 6K)', description: '빠른 로딩, 저사양 권장' },
+  medium: { width: 16000, height: 12000, label: '중간 (16K x 12K)', description: '균형잡힌 크기' },
+  large: { width: 32000, height: 24000, label: '큼 (32K x 24K)', description: '대륙 규모, 고사양 필요' },
+} as const;
 
-  // 월드의 세로 높이 (픽셀) - 대륙 규모 (4배 확대)
-  height: 24000,
+export type WorldSizePreset = keyof typeof WORLD_SIZE_PRESETS;
+
+// 기본 월드 설정 (small이 기본값)
+export const WORLD_CONFIG: {
+  width: number;
+  height: number;
+  chunkSize: number;
+} = {
+  // 월드의 가로 너비 (픽셀) - 기본값 small
+  width: WORLD_SIZE_PRESETS.small.width,
+
+  // 월드의 세로 높이 (픽셀) - 기본값 small
+  height: WORLD_SIZE_PRESETS.small.height,
 
   // 한 청크의 크기 (한 청크는 chunkSize x chunkSize 타일로 구성)
   chunkSize: 100,
 };
+
+// 월드 설정을 동적으로 변경하는 함수
+export function setWorldSize(preset: WorldSizePreset): void {
+  const size = WORLD_SIZE_PRESETS[preset];
+  WORLD_CONFIG.width = size.width;
+  WORLD_CONFIG.height = size.height;
+}
+
+// 커스텀 크기 설정
+export function setCustomWorldSize(width: number, height: number): void {
+  WORLD_CONFIG.width = width;
+  WORLD_CONFIG.height = height;
+}
 
 // 노이즈 파라미터 설정
 // 월드 크기 32000x24000에 맞춰 주파수 조정 (4배 작게)

@@ -189,6 +189,142 @@
   50% { opacity: 1; }
 }
 
+/* 설정 토글 버튼 */
+.settings-toggle {
+  background: transparent;
+  border: 1px solid rgba(74, 158, 255, 0.3);
+  color: var(--color-text-secondary);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.2s ease;
+}
+
+.settings-toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* 설정 패널 */
+.settings-panel {
+  background: rgba(30, 30, 40, 0.9);
+  border: 1px solid rgba(74, 158, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.setting-group {
+  margin-bottom: 20px;
+}
+
+.setting-group:last-child {
+  margin-bottom: 0;
+}
+
+.setting-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+/* 월드 크기 선택 */
+.size-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.size-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 15px;
+  background: rgba(40, 40, 55, 0.8);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.size-option:hover {
+  background: rgba(50, 50, 70, 0.9);
+  border-color: rgba(74, 158, 255, 0.3);
+}
+
+.size-option.active {
+  background: rgba(74, 158, 255, 0.15);
+  border-color: var(--color-accent);
+}
+
+.size-label {
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.size-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+/* 슬라이더 */
+.setting-group input[type="range"] {
+  width: 100%;
+  height: 6px;
+  background: rgba(60, 60, 80, 0.8);
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.setting-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.setting-group input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+/* 시작 버튼 */
+.start-button {
+  padding: 16px 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--color-accent), #4ade80);
+  border: none;
+  border-radius: 30px;
+  color: white;
+  cursor: pointer;
+  box-shadow:
+    0 0 20px rgba(74, 158, 255, 0.3),
+    0 0 40px rgba(74, 222, 128, 0.2);
+  animation: fadeInUp 0.5s ease-out 0.2s both;
+  transition: all 0.3s ease;
+}
+
+.start-button:hover {
+  background: linear-gradient(135deg, var(--color-accent-hover), #4ade80);
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 30px rgba(74, 158, 255, 0.5),
+    0 0 60px rgba(74, 222, 128, 0.3);
+}
+
 /* 앱 레이아웃 */
 .app {
   width: 100%;
