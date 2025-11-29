@@ -1,0 +1,101 @@
+/**
+ * Evolution Simulator - Global Styles
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #1a1a2e;
+  color: #e4e4e4;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 로딩 화면 */
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1a1a2e;
+  z-index: 9999;
+}
+
+.loading h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #00d9ff;
+}
+
+.loading p {
+  font-size: 1rem;
+  color: #90a4ae;
+}
+
+/* 스피너 애니메이션 */
+.spinner {
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+  border: 4px solid rgba(0, 217, 255, 0.1);
+  border-top-color: #00d9ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* UI 패널 (나중에 구현) */
+.ui-panel {
+  position: fixed;
+  background-color: rgba(22, 33, 62, 0.9);
+  border: 1px solid #0f3460;
+  border-radius: 8px;
+  padding: 16px;
+  color: #e4e4e4;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+}
+
+.ui-panel h2 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #00d9ff;
+}
+
+/* 커서 */
+body {
+  cursor: default;
+}
+
+body.grabbing,
+body.grabbing * {
+  cursor: grabbing !important;
+}

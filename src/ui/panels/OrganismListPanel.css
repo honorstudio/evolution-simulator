@@ -1,0 +1,224 @@
+/**
+ * OrganismListPanel 스타일
+ */
+
+.organism-list-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 8px;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.organism-list-panel h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e0e0e0;
+  flex-shrink: 0;
+}
+
+/* 검색 */
+.list-search {
+  flex-shrink: 0;
+}
+
+.list-search input {
+  width: 100%;
+  padding: 6px 10px;
+  background: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 12px;
+}
+
+.list-search input:focus {
+  outline: none;
+  border-color: #0078d4;
+}
+
+.list-search input::placeholder {
+  color: #888;
+}
+
+/* 필터 */
+.list-filters {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.list-filters select {
+  flex: 1;
+  padding: 4px 8px;
+  background: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.list-filters select:focus {
+  outline: none;
+  border-color: #0078d4;
+}
+
+/* 정렬 버튼 */
+.list-sort {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.sort-label {
+  font-size: 11px;
+  color: #888;
+}
+
+.sort-btn {
+  padding: 3px 6px;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 3px;
+  color: #aaa;
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.sort-btn:hover {
+  background: #404040;
+  color: #e0e0e0;
+}
+
+.sort-btn.active {
+  background: #0078d4;
+  border-color: #0078d4;
+  color: white;
+}
+
+/* 가상 스크롤 컨테이너 */
+.list-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #1e1e1e;
+  border-radius: 4px;
+  min-height: 100px;
+}
+
+.list-content {
+  position: relative;
+}
+
+/* 리스트 아이템 */
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  gap: 8px;
+  background: #252526;
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+  transition: background 0.1s ease;
+  box-sizing: border-box;
+}
+
+.list-item:hover {
+  background: #2a4a5e;
+}
+
+.item-icon {
+  font-size: 14px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.item-id {
+  font-family: monospace;
+  font-size: 11px;
+  color: #0af;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-diet {
+  font-size: 10px;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.item-diet.diet-herbivore {
+  background: #2e5a2e;
+  color: #8f8;
+}
+
+.item-diet.diet-carnivore {
+  background: #5a2e2e;
+  color: #f88;
+}
+
+.item-diet.diet-omnivore {
+  background: #5a4a2e;
+  color: #fa8;
+}
+
+.item-diet.diet-photosynthetic {
+  background: #2e4a5a;
+  color: #8ff;
+}
+
+.item-energy {
+  font-size: 11px;
+  color: #8f8;
+  width: 35px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.item-gen {
+  font-size: 10px;
+  color: #888;
+  width: 30px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* 도움말 */
+.list-help {
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 10px;
+  color: #666;
+  padding-top: 4px;
+  border-top: 1px solid #333;
+}
+
+/* 스크롤바 */
+.list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.list-container::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.list-container::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.list-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

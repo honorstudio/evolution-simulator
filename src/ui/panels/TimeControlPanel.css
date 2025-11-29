@@ -1,0 +1,88 @@
+.time-control-panel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+}
+
+.time-controls {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.control-btn {
+  min-width: 64px;
+  height: 36px;
+  padding: 0 var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.control-btn:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+.control-btn.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.control-btn.playing {
+  background: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.control-btn.paused {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+}
+
+.time-info {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.time-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.time-label {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.time-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .time-control-panel {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .time-info {
+    width: 100%;
+    justify-content: space-around;
+  }
+}

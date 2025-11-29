@@ -1,0 +1,150 @@
+.organism-info-panel {
+  /* panel 스타일 상속 */
+}
+
+.no-selection {
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.no-selection p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* 에너지 바 */
+.energy-section {
+  margin-bottom: var(--spacing-md);
+}
+
+.energy-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.energy-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.energy-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-success) 0%, var(--color-warning) 50%, var(--color-danger) 100%);
+  transition: width 0.3s ease;
+}
+
+/* 정보 섹션 */
+.info-section {
+  margin-bottom: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.info-section h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
+}
+
+.info-label {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.info-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* 분류 배지 */
+.classification-badges {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge.plant {
+  background: rgba(76, 175, 80, 0.3);
+  color: #81c784;
+}
+
+.badge.animal {
+  background: rgba(255, 152, 0, 0.3);
+  color: #ffb74d;
+}
+
+.badge.undetermined {
+  background: rgba(158, 158, 158, 0.3);
+  color: #bdbdbd;
+}
+
+.badge.herbivore {
+  background: rgba(129, 199, 132, 0.3);
+  color: #a5d6a7;
+}
+
+.badge.carnivore {
+  background: rgba(244, 67, 54, 0.3);
+  color: #ef5350;
+}
+
+.badge.omnivore {
+  background: rgba(255, 183, 77, 0.3);
+  color: #ffcc80;
+}
+
+.badge.photosynthetic {
+  background: rgba(76, 175, 80, 0.3);
+  color: #81c784;
+}
+
+.badge.multicellular {
+  background: rgba(156, 39, 176, 0.3);
+  color: #ba68c8;
+}
+
+/* 건강 바 */
+.health-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.health-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50 0%, #8bc34a 100%);
+  transition: width 0.3s ease;
+}

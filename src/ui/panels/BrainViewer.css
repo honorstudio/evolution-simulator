@@ -1,0 +1,235 @@
+/**
+ * BrainViewer 패널 스타일
+ * Phase 3: 상세 관찰 도구
+ */
+
+.brain-viewer {
+  background: rgba(30, 30, 35, 0.95);
+  border: 1px solid rgba(100, 120, 200, 0.3);
+  border-radius: 8px;
+  color: #e0e0e0;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.brain-viewer-header {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.4) 100%);
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid rgba(100, 120, 200, 0.2);
+}
+
+.brain-viewer-header h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #c0c8ff;
+}
+
+.collapse-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #c0c8ff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s;
+}
+
+.collapse-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.brain-viewer-content {
+  padding: 12px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* 선택되지 않은 상태 */
+.brain-viewer .no-selection {
+  text-align: center;
+  padding: 24px 16px;
+  color: #888;
+  font-size: 12px;
+}
+
+/* 감각 입력 섹션 */
+.sensory-inputs {
+  margin-bottom: 16px;
+}
+
+.sensory-inputs h4,
+.neural-network h4,
+.behavior-outputs h4 {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #aab;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-item label {
+  min-width: 80px;
+  font-size: 11px;
+  color: #999;
+}
+
+.brain-viewer .progress-bar {
+  flex: 1;
+  height: 16px;
+  background: rgba(60, 60, 70, 0.6);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.brain-viewer .progress-fill {
+  height: 100%;
+  transition: width 0.2s ease;
+  border-radius: 3px;
+}
+
+.input-item .value {
+  min-width: 40px;
+  text-align: right;
+  font-size: 11px;
+  font-weight: 600;
+  color: #bbb;
+  font-family: monospace;
+}
+
+/* 신경망 시각화 */
+.neural-network {
+  margin-bottom: 16px;
+}
+
+.neural-canvas {
+  width: 100%;
+  height: 180px;
+  border: 1px solid rgba(100, 100, 120, 0.3);
+  border-radius: 6px;
+  background: rgba(20, 20, 25, 0.8);
+}
+
+/* 행동 출력 섹션 */
+.behavior-outputs {
+  margin-bottom: 8px;
+}
+
+.output-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.output-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.output-item label {
+  font-size: 10px;
+  color: #888;
+}
+
+.output-value {
+  padding: 6px 8px;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px;
+  color: white;
+  font-family: monospace;
+}
+
+/* 이동 방향 표시 */
+.direction-indicator {
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(40, 40, 50, 0.6);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.direction-indicator h5 {
+  margin: 0 0 8px 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: #888;
+}
+
+.direction-arrow {
+  font-size: 32px;
+  color: #2196F3;
+  transition: transform 0.2s ease;
+  line-height: 1;
+  display: inline-block;
+}
+
+.speed-value {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  color: #999;
+  font-family: monospace;
+}
+
+/* 스크롤바 */
+.brain-viewer-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.brain-viewer-content::-webkit-scrollbar-track {
+  background: rgba(40, 40, 50, 0.5);
+  border-radius: 3px;
+}
+
+.brain-viewer-content::-webkit-scrollbar-thumb {
+  background: rgba(100, 120, 200, 0.4);
+  border-radius: 3px;
+}
+
+.brain-viewer-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 120, 200, 0.6);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .brain-viewer-content {
+    padding: 10px;
+  }
+
+  .neural-canvas {
+    height: 140px;
+  }
+
+  .input-item label {
+    min-width: 60px;
+    font-size: 10px;
+  }
+
+  .output-items {
+    grid-template-columns: 1fr;
+  }
+}

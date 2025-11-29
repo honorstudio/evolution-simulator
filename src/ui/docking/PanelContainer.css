@@ -1,0 +1,234 @@
+/**
+ * PanelContainer 스타일
+ * Adobe 스타일의 도킹 패널
+ */
+
+.panel-container {
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  min-height: 40px;
+  flex: 1;
+}
+
+.panel-container.collapsed {
+  min-height: auto;
+  flex: 0 0 auto;
+}
+
+/* 패널 헤더 (탭 바) */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #252526;
+  border-bottom: 1px solid #3c3c3c;
+  min-height: 32px;
+  height: 32px;
+  padding: 0 4px;
+  cursor: default;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* 탭 컨테이너 */
+.panel-tabs {
+  display: flex;
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  gap: 2px;
+}
+
+.panel-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/* 개별 탭 */
+.panel-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 12px;
+  cursor: grab;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  border-radius: 4px 4px 0 0;
+}
+
+.panel-tab:hover {
+  background: #2a2d2e;
+  color: #ccc;
+}
+
+.panel-tab.active {
+  background: #1e1e1e;
+  color: #fff;
+  border-bottom: 2px solid #0078d4;
+  margin-bottom: -1px;
+}
+
+.panel-tab:active {
+  cursor: grabbing;
+}
+
+.tab-icon {
+  font-size: 14px;
+}
+
+.tab-title {
+  font-size: 12px;
+}
+
+.tab-close {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #666;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  opacity: 0;
+  transition: all 0.15s ease;
+}
+
+.panel-tab:hover .tab-close,
+.panel-tab.active .tab-close {
+  opacity: 1;
+}
+
+.tab-close:hover {
+  background: #ff4444;
+  color: #fff;
+}
+
+/* 패널 컨트롤 버튼 */
+.panel-controls {
+  display: flex;
+  gap: 4px;
+  padding-left: 8px;
+}
+
+.panel-control-btn {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #666;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: all 0.15s ease;
+}
+
+.panel-control-btn:hover {
+  background: #3c3c3c;
+  color: #fff;
+}
+
+/* 패널 내용 */
+.panel-content {
+  flex: 1;
+  overflow: auto;
+  padding: 8px;
+  min-height: 100px;
+}
+
+/* ========================================
+   드롭 프리뷰 - 명확한 시각적 피드백
+   ======================================== */
+
+.drop-preview {
+  position: absolute;
+  background: rgba(0, 120, 212, 0.25);
+  border: 3px solid #0078d4;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(0, 120, 212, 0.5);
+  animation: dropPreviewPulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes dropPreviewPulse {
+  from {
+    box-shadow: 0 0 10px rgba(0, 120, 212, 0.3);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(0, 120, 212, 0.6);
+  }
+}
+
+.drop-preview-label {
+  background: #0078d4;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 탭으로 합치기 - 헤더 영역 강조 */
+.drop-preview-tab {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  border-radius: 4px 4px 0 0;
+}
+
+/* 위로 분할 - 상단 절반 */
+.drop-preview-top {
+  top: 32px;
+  left: 0;
+  right: 0;
+  height: calc(50% - 16px);
+  border-radius: 0 0 4px 4px;
+}
+
+/* 아래로 분할 - 하단 절반 */
+.drop-preview-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(50% - 16px);
+  border-radius: 4px;
+}
+
+/* 왼쪽으로 분할 - 좌측 절반 */
+.drop-preview-left {
+  top: 32px;
+  left: 0;
+  width: 50%;
+  bottom: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+/* 오른쪽으로 분할 - 우측 절반 */
+.drop-preview-right {
+  top: 32px;
+  right: 0;
+  width: 50%;
+  bottom: 0;
+  border-radius: 4px 0 0 4px;
+}

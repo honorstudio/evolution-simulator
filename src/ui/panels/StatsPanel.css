@@ -1,0 +1,159 @@
+.stats-panel {
+  /* panel 스타일 상속 */
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.stats-section {
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.stats-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.stats-section-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-sm);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-item.wide {
+  grid-column: 1 / -1;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.3px;
+}
+
+/* 종류별 색상 */
+.stat-label.plant {
+  color: #4ade80;
+}
+
+.stat-label.animal {
+  color: #f97316;
+}
+
+.stat-label.herbivore {
+  color: #22d3d1;
+}
+
+.stat-label.carnivore {
+  color: #ef4444;
+}
+
+.stat-label.omnivore {
+  color: #f59e0b;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.stat-value.success {
+  color: var(--color-success);
+}
+
+.stat-value.danger {
+  color: var(--color-danger);
+}
+
+.stat-value.warning {
+  color: var(--color-warning);
+}
+
+/* 원시 지구 환경 섹션 */
+.environment-section {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.era-description {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+  font-style: italic;
+}
+
+/* 산소 바 */
+.stat-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.oxygen-bar-container {
+  position: relative;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.oxygen-bar {
+  height: 100%;
+  transition: width 0.5s ease, background-color 0.5s ease;
+  min-width: 2px;
+}
+
+.oxygen-value {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* 진화 상태 배지 */
+.evolution-status {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background: rgba(74, 222, 128, 0.2);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.4);
+}
+
+.status-badge.inactive {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}

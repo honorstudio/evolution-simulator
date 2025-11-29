@@ -1,0 +1,73 @@
+/**
+ * DockingLayout 스타일
+ */
+
+.docking-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+/* 메인 컨텐츠 영역 */
+.docking-main {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  min-width: 400px;
+}
+
+/* 드롭 타겟 상태 */
+.docking-main.drop-target {
+  outline: 3px dashed #0078d4;
+  outline-offset: -3px;
+}
+
+/* 드롭 인디케이터 오버레이 */
+.docking-main-drop-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 120, 212, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 100;
+  animation: dropIndicatorFadeIn 0.2s ease;
+}
+
+@keyframes dropIndicatorFadeIn {
+  from {
+    opacity: 0;
+    background: rgba(0, 120, 212, 0);
+  }
+  to {
+    opacity: 1;
+    background: rgba(0, 120, 212, 0.15);
+  }
+}
+
+.drop-indicator-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 32px;
+  background: rgba(30, 30, 30, 0.95);
+  border: 2px solid #0078d4;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.drop-indicator-icon {
+  font-size: 32px;
+}
+
+.drop-indicator-text {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
