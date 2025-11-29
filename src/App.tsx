@@ -600,12 +600,22 @@ function GameMain({ onNewGame }: { onNewGame: () => void }) {
  */
 function App() {
   const [started, setStarted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [gameKey, setGameKey] = useState(0);
 
   // 새 게임 시작 (GameProvider 재생성, 시작 화면으로 돌아가지 않음)
   const handleNewGame = useCallback(() => {
     // 시작 화면으로 돌아가지 않고 게임만 리셋
     setGameKey(prev => prev + 1);
+  }, []);
+
+  // 시작 버튼 클릭 핸들러
+  const handleStart = useCallback(() => {
+    setLoading(true);
+    // 로딩 애니메이션이 보이도록 약간의 지연 후 시작
+    setTimeout(() => {
+      setStarted(true);
+    }, 100);
   }, []);
 
   // 시작 화면
@@ -615,7 +625,14 @@ function App() {
         <div className="start-content">
           <h1>Evolution Simulator</h1>
           <p>AI 기반 생태계 진화 시뮬레이션</p>
-          <button onClick={() => setStarted(true)}>시작하기</button>
+          {loading ? (
+            <div className="loading-container">
+              <div className="loading-spinner"></div>
+              <p className="loading-text">세계를 생성하는 중...</p>
+            </div>
+          ) : (
+            <button onClick={handleStart}>시작하기</button>
+          )}
         </div>
       </div>
     );
